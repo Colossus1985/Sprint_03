@@ -12,25 +12,63 @@
         <div id="div_title">
           <h1 id="maintitle">Distributeur de tickets pour la promo</h1>
         </div>
-        <div id="icon_header"></div>
+        <div id="icon_header">
+          <img src="#" alt="ticket" />
+        </div>
       </div>
     </header>
     <div id="main_container">
-      <div id="div_ajout">
-        <div id="input_titre_poissons">
+      <div id="sec_title">
+        <div id="alien">
+          <img src="#" alt="alien head" />
+        </div>
+        <div id="sec_title_part1">
           <h2 class="sec_title">Ici, c'est comme à la poissonnerie</h2>
-          <div id="alien">
-            <img src="img/alien.png" width="3rem" height="3rem" />
-          </div>
-          <div id="input_titre_queue">
-            <div id="poisson">
-              <img src="#" />
-            </div>
-            <h2 class="sec_title">, il faut faire la queue !</h2>
-          </div>
+        </div>
+        <div id="poisson">
+          <img src="#" alt="possion" />
+        </div>
+        <div id="sec_title_part2">
+          <h2 class="sec_title">, il faut faire la queue !</h2>
         </div>
       </div>
-      <div id="div_list"></div>
+      <div id="div_ajout">
+        <form>
+          <label for="name" id="label_nom">Ton nom :</label>
+          <input type="text" name="nom" id="input_name" />
+          <button type="submit" id="btn_submit">
+            Je veux de l'aide <img src="#" alt="btn_img_demande" />
+          </button>
+        </form>
+      </div>
+      <div id="div_list">
+        <div id="div_apprennant_title">
+          <h2 class="sec_title">Liste des apprenant.e.s</h2>
+        </div>
+        <div id="btn_modif_list">
+          <button type="button" id="btn_suivant">
+            Au suivant <img src="#" id="btn_img_suivant" alt="suivant" /> !
+          </button>
+          <button id="btn_refraiche_list">
+            Raffraîdhir la liste <img src="#" id="btn_img_raffraichir" alt="raffraichir" />
+          </button>
+        </div>
+        <div id="div_list_names">
+          <table>
+            <thead>
+              <tr>
+                Nom
+              </tr>
+              <tr>
+                Date
+              </tr>
+              <tr>
+                Passer mon tour
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
     </div>
   </body>
 </html>
