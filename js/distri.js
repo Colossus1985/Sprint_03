@@ -1,36 +1,72 @@
-let words = [];
-//fonction qui permet d'écrire un participant dans le texte et de l'ajouter dans le tableau" words"
+var list_user = [];
 
 function add_name() {
-  let userAdd = document.getElementById('input_name').value;
+  var time = date_time();
+  var table_personnes = document.getElementById("table_personnes");
+  var nom = document.getElementById("input_name").value.toString();
+  var person = new Person(nom, time);
 
-  //vérifie si le texte est vide donc ne fais rien
-  if (userAdd != '') {
-    words.push(userAdd);
-    name_info();
+  var i = 0;
+  var first = 0;
 
+  function Person(nom, time) {
+    this.nom = nom;
+    this.time = time;
+  }
+
+  list_user.push(person);
+  console.log(list_user);
+
+  var tr_personne = document.createElement("tr");
+  var td_nom = document.createElement("td");
+  var td_date = document.createElement("td");
+  var td_btn_passer = document.createElement("td");
+  var btn_passer = document.createElement("button");
+
+  tr_personne.className = "tr_demandant_base";
+  td_nom.className = "td_nom_demandant_base";
+  td_date.className = "td_date_demandant_base";
+  td_btn_passer.className = "td_btn_passer_base";
+  btn_passer.className = "btn_passer_base";
+
+  if (list_user[0]) {
+    td_nom.className = "td_nom_demandant_first";
+  }
+  for (i; i < list_user.length; i++) {
+    td_nom.textContent = list_user[i].nom;
+    td_date.textContent = time;
+    btn_passer.textContent = "Je passe mon tour";
+
+    td_btn_passer.appendChild(btn_passer);
+
+    table_personnes.appendChild(tr_personne);
+    table_personnes.appendChild(td_nom);
+    table_personnes.appendChild(td_date);
+    table_personnes.appendChild(td_btn_passer);
   }
 }
-function name_info() {
-    let showInfo = '';
-  
-    // inscrit pour chaque nom entrer dans le tableau "words" un <li>
-    words.forEach(word =>
-      showInfo += `
-          <tr >
-          <td>${word}</td>
-          <td>(horaire+date)</td>
-          <td>(bonton)</td>     
-          </tr>
-          `
-        //   <p class="display-4">${word}<span class="float-right"><button  onClick="del(this)" class="btn btn-danger">X</button></span></p>
-    );
-    document.getElementById("ajout_nouveau").innerHTML = showInfo;
-    document.getElementById('input_name').value = null;
-  
-    console.log("tableau:", words);
 
-    return false;
-    //empeche l'actualisation de la page
-  
-  }
+function date_time() {
+  const date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  var day = date.getDay();
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+
+  var date_hour =
+    ("0" + (day - 1)).slice(-2) +
+    "/" +
+    ("0" + (month + 1)).slice(-2) +
+    "/" +
+    year +
+    ", " +
+    ("0" + hour).slice(-2) +
+    ":" +
+    ("0" + min).slice(-2) +
+    ":" +
+    ("0" + sec).slice(-2);
+
+  return date_hour;
+}
