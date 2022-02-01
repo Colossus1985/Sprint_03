@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+body {
+  font-family: "Roboto Mono", monospace;
+  border: 0.2rem dashed black;
+  border-top: none;
+  margin: auto;
+  width: 95%;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+header {
+  margin-top: 4rem;
+  margin-left: 10rem;
+}
+#header_container {
+  background-color: rgba(255, 183, 3, 1);
+  width: 70rem;
+  height: 5rem;
+  text-align: center;
+}
+
+#div_title {
+  display: inline-flex;
+  justify-content: center;
+}
+
+#icon_header {
+  display: inline;
+}
+
+#sec_title {
+  font-size: 15px;
+  background-color: rgba(142, 202, 230, 1);
+  width: 70rem;
+  height: 4rem;
+  margin-top: 2rem;
+  margin-left: 10rem;
+  text-align: center;
+}
+
+#alien {
+  display: inline-flex;
+}
+#sec_title_part1 {
+  display: inline-flex;
+}
+#poisson {
+  display: inline-flex;
+}
+#sec_title_part2 {
+  display: inline-flex;
+}
+
+#div_ajout {
+  width: 70rem;
+  height: 4rem;
+  margin-top: 2rem;
+  margin-left: 10rem;
+  text-align: center;
+}
+
+#label_nom {
+  margin-right: 1rem;
+}
+
+#btn_submit {
+  margin-left: 1rem;
+  background-color: rgba(2, 48, 71, 1);
+  color: #fff;
+  font-weight: bold;
+  border: 0.5rem solid rgba(2, 48, 71, 1);
+  border-radius: 0.2rem;
+}
+
+#div_list {
+  width: 70rem;
+  margin-left: 10rem;
+  text-align: center;
+}
+
+#div_apprennant_title {
+  background-color: rgba(142, 202, 230, 1);
+  height: 3rem;
+}
+#btn_modif_list {
+  margin-top: 1rem;
+}
+
+#btn_suivant {
+  margin-left: 1rem;
+  background-color: rgba(2, 48, 71, 1);
+  color: #fff;
+  font-weight: bold;
+  border: 0.5rem solid rgba(2, 48, 71, 1);
+  border-radius: 0.2rem;
+}
+#btn_refraiche_list {
+  margin-left: 1rem;
+  background-color: rgba(2, 48, 71, 1);
+  color: #fff;
+  font-weight: bold;
+  border: 0.5rem solid rgba(2, 48, 71, 1);
+  border-radius: 0.2rem;
+}
+
+.sec_title {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3rem;
+}
+
+#div_list_names {
+  margin-top: 1rem;
+  width: 70rem;
+  margin-left: 17rem;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: 0.1rem solid black;
+}
+.nom {
+  width: 10rem;
+}
+.date {
+  width: 12rem;
+}
+
+.passer_tour {
+  width: 12rem;
+}
+
+tr {
+  width: 4rem;
+  border: 0.1rem solid black;
+  background-color: white;
+}
+
+td {
+  border: 0.1rem solid black;
+  text-align: center;
+  background-color: white;
+}
+
+th {
+  border: 0.1rem solid black;
+  text-align: center;
+  background-color: white;
+}

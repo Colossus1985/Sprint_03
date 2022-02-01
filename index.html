@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+     <link rel="stylesheet" href="styles/distri_pc.css">
+     <script src="js/distri.js" defer></script>
+    <script src="https://kit.fontawesome.com/677c526923.js" crossorigin="anonymous"></script>
+    <title>ticket d'aide</title>
   </head>
   <body>
     <header>
@@ -23,7 +26,7 @@
           <img src="#" alt="alien head" />
         </div>
         <div id="sec_title_part1">
-          <h2 class="sec_title">Ici, c'est comme à la poissonnerie</h2>
+          <h2 class="sec_title">Ici c'est comme à la poissonnerie</h2>
         </div>
         <div id="poisson">
           <img src="#" alt="possion" />
@@ -36,7 +39,7 @@
         <form>
           <label for="name" id="label_nom">Ton nom :</label>
           <input type="text" name="nom" id="input_name" />
-          <button type="submit" id="btn_submit">
+          <button type="submit" id="btn_submit"  onClick="add_name()">
             Je veux de l'aide <img src="#" alt="btn_img_demande" />
           </button>
         </form>
@@ -55,20 +58,18 @@
         </div>
         <div id="div_list_names">
           <table>
-            <thead>
-              <tr>
-                Nom
-              </tr>
-              <tr>
-                Date
-              </tr>
-              <tr>
-                Passer mon tour
-              </tr>
-            </thead>
+            <tr>
+              <th class="nom">Nom</th>
+              <th class="date">Date</th>
+              <th class="passer_tour">Passer mon tour</th>
+            </tr>
+            <tr id="ajout_nouveau">
+            
+            </tr>
           </table>
         </div>
       </div>
     </div>
+    <br>
   </body>
 </html>
