@@ -24,16 +24,23 @@ function add_name() {
   var btn_passer = document.createElement("button");
 
   tr_personne.className = "tr_demandant_base";
-  td_nom.className = "td_nom_demandant_base";
-  td_date.className = "td_date_demandant_base";
-  td_btn_passer.className = "td_btn_passer_base";
   btn_passer.className = "btn_passer_base";
 
-  if (list_user[0]) {
-    td_nom.className = "td_nom_demandant_first";
-  }
-  for (i; i < list_user.length; i++) {
-    td_nom.textContent = list_user[i].nom;
+  const list_user_sorted = list_user.sort((a, b) => b.date - a.date);
+  console.log(list_user_sorted);
+
+  for (i; i < list_user_sorted.length; i++) {
+    if (list_user_sorted[i] == list_user_sorted[0]) {
+      td_nom.className = "td_nom_demandant_first";
+      td_date.className = "td_date_demandant_first";
+      td_btn_passer.className = "td_btn_passer_first";
+    } else {
+      td_nom.className = "td_nom_demandant_base";
+      td_date.className = "td_date_demandant_base";
+      td_btn_passer.className = "td_btn_passer_base";
+    }
+
+    td_nom.textContent = list_user_sorted[i].nom;
     td_date.textContent = time;
     btn_passer.textContent = "Je passe mon tour";
 
