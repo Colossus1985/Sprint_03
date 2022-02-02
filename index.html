@@ -38,10 +38,9 @@
       <div id="div_ajout">
         <form>
           <label for="name" id="label_nom">Ton nom :</label>
-          <input type="text" name="nom" id="input_name" />
-          <button type="submit" id="btn_submit"  onClick="add_name()">
-            Je veux de l'aide <img src="#" alt="btn_img_demande" />
-          </button>
+          <input type="text" name="name" id="input_name" />
+          <div id="btn_submit"  onClick="add_name()">
+           <p id="help"> Je veux de l'aide   <img src="img/hands.png" alt="btn_img_demande" /></p>
         </form>
       </div>
       <div id="div_list">
@@ -53,18 +52,15 @@
             Au suivant <img src="#" id="btn_img_suivant" alt="suivant" /> !
           </button>
           <button id="btn_refraiche_list">
-            Raffraîdhir la liste <img src="#" id="btn_img_raffraichir" alt="raffraichir" />
+            Raffraîchir la liste <img src="#" id="btn_img_raffraichir" alt="raffraichir" />
           </button>
         </div>
         <div id="div_list_names">
-          <table>
+          <table id="table_personnes">
             <tr>
-              <th class="nom">Nom</th>
-              <th class="date">Date</th>
-              <th class="passer_tour">Passer mon tour</th>
-            </tr>
-            <tr id="ajout_nouveau">
-            
+              <th id="nom">Nom</th>
+              <th id="date">Date</th>
+              <th id="passer_tour">Passer mon tour</th>
             </tr>
           </table>
         </div>
