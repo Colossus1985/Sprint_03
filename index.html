@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="stylesheet" href="styles/distri_pc.css">
-     <script src="js/distri.js" defer></script>
+    <link rel="stylesheet" href="styles/distri_pc.css" />
+    <script src="js/distri.js" defer></script>
     <script src="https://kit.fontawesome.com/677c526923.js" crossorigin="anonymous"></script>
     <title>ticket d'aide</title>
   </head>
@@ -38,38 +38,40 @@
       <div id="div_ajout">
         <form>
           <label for="name" id="label_nom">Ton nom :</label>
-          <input type="text" name="nom" id="input_name" />
-          <button type="submit" id="btn_submit"  onClick="add_name()">
-            Je veux de l'aide <img src="#" alt="btn_img_demande" />
-          </button>
+          <input type="text" name="name" id="input_name" />
+          <div id="btn_submit" onClick="add_name()">
+            <a href=""
+              ><p>veux de l'aide <img src="#" alt="btn_img_demande" /></p
+            ></a>
+          </div>
         </form>
       </div>
       <div id="div_list">
         <div id="div_apprennant_title">
           <h2 class="sec_title">Liste des apprenant.e.s</h2>
         </div>
-        <div id="btn_modif_list">
-          <button type="button" id="btn_suivant">
-            Au suivant <img src="#" id="btn_img_suivant" alt="suivant" /> !
-          </button>
+        <div id="btn_suivant">
+          <div id="btn_suivant" onclick="suivant()">
+            <a href=""
+              ><p>Au suivant <img src="#" id="btn_img_suivant" alt="suivant" /> !</p></a
+            >
+          </div>
           <button id="btn_refraiche_list">
             Raffraîdhir la liste <img src="#" id="btn_img_raffraichir" alt="raffraichir" />
           </button>
         </div>
         <div id="div_list_names">
-          <table>
+          <table id="table_personnes">
             <tr>
-              <th class="nom">Nom</th>
-              <th class="date">Date</th>
-              <th class="passer_tour">Passer mon tour</th>
-            </tr>
-            <tr id="ajout_nouveau">
-            
+              <th id="nom">Nom</th>
+              <th id="date">Date</th>
+              <th id="passer_tour">Passer mon tour</th>
             </tr>
           </table>
+          <table id="table_personne_traite"></table>
         </div>
       </div>
     </div>
-    <br>
+    <br />
   </body>
 </html>
