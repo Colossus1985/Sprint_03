@@ -200,8 +200,6 @@ th {
 }
 
 @media screen and (max-width: 520px) {
-  #btn_suivant {
-  }
   #btn_refraiche_list {
     margin-top: 1rem;
   }
