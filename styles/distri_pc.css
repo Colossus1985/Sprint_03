@@ -146,7 +146,6 @@ table {
   height: 2rem;
 }
 
-
 #passer_tour {
   width: 12rem;
   height: 2rem;
@@ -197,7 +196,7 @@ td {
   background: rgb(162, 145, 255);
 }
 .td_nom_demandant_traite {
-  background-color: rgb(146, 248, 146);
+  background: rgb(146, 248, 146);
 }
 .td_date_demandant_traite {
   background: rgb(146, 248, 146);
@@ -205,15 +204,20 @@ td {
 .td_btn_passer_traite {
   background: rgb(146, 248, 146);
 }
-
-.td_nom_demandant_first {
-  background: rgb(24, 142, 197);
+.td_nom_demandant_passer {
+  background: rgb(153, 153, 153);
 }
-.td_date_demandant_first {
-  background: rgb(24, 142, 197);
+.td_date_demandant_passer {
+  background: rgb(153, 153, 153);
 }
-.td_btn_passer_first {
-  background: rgb(24, 142, 197);
+.td_btn_passer_passer {
+  background: rgb(153, 153, 153);
+}
+.hide_id_on_btn {
+  color: rgba(0, 0, 0, 0);
+}
+.link_all_btn {
+  text-decoration: none;
 }
 
 .btn_passer_base {

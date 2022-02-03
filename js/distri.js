@@ -1,24 +1,46 @@
-//Storage.clear();
+//localStorage.clear();
 var list_user = [];
+var list_user_new = [];
 var list_user_suivant = [];
 var list_user_traite = [];
-var list_user_recharge_LS = [];
+var list_user_traite_new = [];
 var list_user_traite_LS = [];
+var list_user_passer = [];
+var list_user_passer_new = [];
+var list_user_passer_LS = [];
 
+var regex = /^([-'!a-zA-Z0-9àâçéèêëîïôûùüÿñæœ ]+)$/;
 var iterance = 0;
 
-//récupération des participant du localStorage avec le chargement de la page;
+const input_nom = document.getElementById("input_name");
+input_nom.addEventListener("keydown", (event) => {
+  var key_entre = event.key;
+  if (!key_entre.match(regex)) {
+    event.preventDefault();
+    alert("Seulement les lettres et chiffres ainsi que ' ' ' et ' - ' !");
+  }
+});
+
 var list_user_LS = localStorage.getItem("list_user");
-//retransformer en objet
 if (list_user_LS != "" && list_user_LS != null) {
-  list_user_LS = JSON.parse(list_user_LS); //transformer le string du LS en liste d'objet
+  list_user_LS = JSON.parse(list_user_LS);
   for (var i = 0; i < list_user_LS.length; i++) {
-    //récupération de chaque valeur de chaque participant
+    var id = list_user_LS[i].id;
     var nom = list_user_LS[i].nom;
     var time = list_user_LS[i].time;
-    //appel de la fonction pour réintégrer les participant dans la liste d'affichage
-    //avec comme paramètre les valeur appartenant à l'objet correspondnant
-    recup_list_user_LS(nom, time);
+    recup_list_user_LS(id, nom, time);
+  }
+}
+
+var list_user_passer_LS = localStorage.getItem("list_user_passer");
+if (list_user_passer_LS != "" && list_user_passer_LS != null) {
+  list_user_passer_LS = JSON.parse(list_user_passer_LS);
+  for (var i = 0; i < list_user_passer_LS.length; i++) {
+    var id = list_user_passer_LS[i].id;
+    var nom = list_user_passer_LS[i].nom;
+    var time = list_user_passer_LS[i].time;
+    console.log(id, nom, time);
+    recup_list_user_passer_LS(id, nom, time);
   }
 }
 
@@ -26,35 +48,43 @@ var list_user_traite_LS = localStorage.getItem("list_user_traite");
 if (list_user_traite_LS != "" && list_user_traite_LS != null) {
   list_user_traite_LS = JSON.parse(list_user_traite_LS);
   for (var i = 0; i < list_user_traite_LS.length; i++) {
+    var id = list_user_traite_LS[i].id;
     var nom = list_user_traite_LS[i].nom;
     var time = list_user_traite_LS[i].time;
-    recup_list_user_traite_LS(nom, time);
+    recup_list_user_traite_LS(id, nom, time);
   }
 }
 
-function recup_list_user_LS(nom, time) {
+function recup_list_user_LS(id, nom, time) {
+  var id;
   var nom;
   var time;
   var i = 0;
   var table_personnes = document.getElementById("table_personnes");
-  var person = new Person(nom, time);
+  var person = new Person(id, nom, time);
 
-  function Person(nom, time) {
+  function Person(id, nom, time) {
+    this.id = id;
     this.nom = nom;
     this.time = time;
   }
 
   list_user.push(person);
-  console.log(list_user);
 
   var tr_personne = document.createElement("tr");
   var td_nom = document.createElement("td");
   var td_date = document.createElement("td");
   var td_btn_passer = document.createElement("td");
   var btn_passer = document.createElement("button");
+  var a = document.createElement("a");
+  var span = document.createElement("span");
+  a.href = "";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
+  span.className = "hide_id_on_btn";
+  a.className = "link_all_btn";
+  btn_passer.setAttribute("onclick", "passer(textContent)");
 
   for (i; i < list_user.length; i++) {
     if (list_user[i] == list_user[0]) {
@@ -69,8 +99,11 @@ function recup_list_user_LS(nom, time) {
 
     td_nom.textContent = list_user[i].nom;
     td_date.textContent = time;
-    btn_passer.textContent = "Je passe mon tour";
+    a.textContent = "Je passe mon tour ";
+    span.textContent = id;
 
+    a.appendChild(span);
+    btn_passer.appendChild(a);
     td_btn_passer.appendChild(btn_passer);
 
     table_personnes.appendChild(tr_personne);
@@ -80,20 +113,22 @@ function recup_list_user_LS(nom, time) {
   }
 }
 
-function recup_list_user_traite_LS(nom, time) {
+function recup_list_user_traite_LS(id, nom, time) {
+  var id;
   var nom;
   var time;
   var i = 0;
   var table_personnes = document.getElementById("table_personnes");
-  var person = new Person(nom, time);
+  var person = new Person(id, nom, time);
 
-  function Person(nom, time) {
+  function Person(id, nom, time) {
+    this.id = id;
     this.nom = nom;
     this.time = time;
   }
 
   list_user_traite.push(person);
-  console.log(list_user_traite);
+  //console.log(list_user_traite);
 
   var tr_personne = document.createElement("tr");
   var td_nom = document.createElement("td");
@@ -115,6 +150,63 @@ function recup_list_user_traite_LS(nom, time) {
     table_personnes.appendChild(td_date);
     table_personnes.appendChild(td_btn_passer);
   }
+}
+
+function recup_list_user_passer_LS(id, nom, time) {
+  var id;
+  var nom;
+  var time;
+  var i = 0;
+  var table_personnes = document.getElementById("table_personnes");
+  var person = new Person(id, nom, time);
+
+  console.log(nom);
+  function Person(id, nom, time) {
+    this.id = id;
+    this.nom = nom;
+    this.time = time;
+  }
+
+  list_user_passer.push(person);
+  console.log(list_user_passer);
+
+  var tr_personne = document.createElement("tr");
+  var td_nom = document.createElement("td");
+  var td_date = document.createElement("td");
+  var td_btn_passer = document.createElement("td");
+
+  tr_personne.className = "tr_demandant_base";
+
+  for (i; i < list_user_passer.length; i++) {
+    td_nom.className = "td_nom_demandant_passer";
+    td_date.className = "td_date_demandant_passer";
+    td_btn_passer.className = "td_btn_passer_passer";
+
+    td_nom.textContent = list_user_passer[i].nom;
+    td_date.textContent = time;
+
+    table_personnes.appendChild(tr_personne);
+    table_personnes.appendChild(td_nom);
+    table_personnes.appendChild(td_date);
+    table_personnes.appendChild(td_btn_passer);
+  }
+}
+
+function id_user() {
+  let id = 1;
+  while (verificationId_user(list_user, id)) {
+    id++;
+  }
+  id = ("000" + id).slice(-4);
+  return id;
+}
+function verificationId_user(list_user, id) {
+  for (var i = 0; i < list_user.length; i++) {
+    if (list_user[i].id == id) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function date_time() {
@@ -142,14 +234,19 @@ function date_time() {
   return date_hour;
 }
 
-function add_name() {
+//#####---btn_ajout---########################################################################
+
+function add_person(nom) {
+  var id = id_user();
   var time = date_time();
+  var nom = nom;
   var table_personnes = document.getElementById("table_personnes");
-  var nom = document.getElementById("input_name").value.toString();
-  var person = new Person(nom, time);
   var i = 0;
 
-  function Person(nom, time) {
+  var person = new Person(id, nom, time);
+
+  function Person(id, nom, time) {
+    this.id = id;
     this.nom = nom;
     this.time = time;
   }
@@ -162,9 +259,15 @@ function add_name() {
   var td_date = document.createElement("td");
   var td_btn_passer = document.createElement("td");
   var btn_passer = document.createElement("button");
+  var a = document.createElement("a");
+  var span = document.createElement("span");
+  a.href = "";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
+  span.className = "hide_id_on_btn";
+  a.className = "link_all_btn";
+  btn_passer.setAttribute("onclick", "passer(textContent)");
 
   for (i; i < list_user.length; i++) {
     if (list_user[i] == list_user[0]) {
@@ -179,8 +282,11 @@ function add_name() {
 
     td_nom.textContent = list_user[i].nom;
     td_date.textContent = time;
-    btn_passer.textContent = "Je passe mon tour";
+    a.textContent = "Je passe mon tour ";
+    span.textContent = id;
 
+    a.appendChild(span);
+    btn_passer.appendChild(a);
     td_btn_passer.appendChild(btn_passer);
 
     table_personnes.appendChild(tr_personne);
@@ -192,54 +298,122 @@ function add_name() {
   localStorage.setItem("list_user", JSON.stringify(list_user));
 }
 
+//#########--btn_suivant---###################################################################
+
 function suivant() {
-  console.log("ici");
   if (list_user[iterance] == list_user[0]) {
-    console.log(list_user[0]);
     var user_traite = list_user.shift();
-    console.log(user_traite);
     list_user_traite.push(user_traite);
-    console.log(list_user_traite);
-  }
-  const list_user_copy = [...list_user]; //copy la list_user dans const
-  for (var c = 0; c < list_user_copy.length; c++) {
-    var nom = list_user_copy[c].nom;
-    var time = list_user_copy[c].time;
-    recharge_list_suivant(nom, time);
   }
 
-  localStorage.clear("list_user");
-  console.log("ici");
+  for (var i = 0; i < list_user_passer.length; i++) {
+    var id = list_user_passer[i].id;
+    var nom = list_user_passer[i].nom;
+    var time = list_user_passer[i].time;
+    recharge_list_user_passer(id, nom, time);
+  }
+
+  const list_user_copy = [...list_user]; //copy la list_user dans const
+  for (var c = 0; c < list_user_copy.length; c++) {
+    var id = list_user_copy[c].id;
+    var nom = list_user_copy[c].nom;
+    var time = list_user_copy[c].time;
+    recharge_list_user(id, nom, time);
+  }
+
+  localStorage.clear();
+
   localStorage.setItem("list_user", JSON.stringify(list_user_copy));
+  localStorage.setItem("list_user_passer", JSON.stringify(list_user_passer));
   localStorage.setItem("list_user_traite", JSON.stringify(list_user_traite));
 }
 
-function recharge_list_suivant(nom, time) {
+//######--btn_passer--############################################################################
+
+function passer(textContent) {
+  console.log("ici", textContent);
+  var id_btn_passer = textContent.slice(-4);
+  console.log(id_btn_passer);
+  id_btn_passer = parseInt(id_btn_passer);
+
+  for (var b = 0; b < list_user.length; b++) {
+    if (id_btn_passer == list_user[b].id) {
+      list_user_passer.push(list_user[b]);
+      var user_nom = list_user[b].nom;
+      for (var i = 0; i < list_user.length; i++) {
+        if (user_nom == list_user[i].nom) {
+          var indice_delete = i;
+        }
+      }
+      list_user.splice(indice_delete, 1);
+    }
+  }
+
+  const list_user_copy2 = [...list_user];
+  for (var i = 0; i < list_user_copy2.length; i++) {
+    var id = list_user_copy2[i].id;
+    var nom = list_user_copy2[i].nom;
+    var time = list_user_copy2[i].time;
+    recharge_list_user(id, nom, time);
+  }
+  for (var b = 0; b < list_user_traite.length; b++) {
+    var id = list_user_traite[b].id;
+    var nom = list_user_traite[b].nom;
+    var time = list_user_traite[b].time;
+    recharge_list_user_traite(id, nom, time);
+  }
+
+  localStorage.clear();
+
+  localStorage.setItem("list_user", JSON.stringify(list_user_copy2));
+  localStorage.setItem("list_user_traite", JSON.stringify(list_user_traite));
+  localStorage.setItem("list_user_passer", JSON.stringify(list_user_passer));
+}
+
+//######--btn_raffraichir--########################################################
+
+function raffraichir() {
+  list_user_passer = [];
+  localStorage.setItem("list_user_passer", JSON.stringify(list_user_passer));
+}
+
+//#################################################################################
+
+function recharge_list_user(id, nom, time) {
+  var id;
   var nom;
   var time;
   var i = 0;
   var table_personnes = document.getElementById("table_personnes");
-  var person = new Person(nom, time);
+  var person = new Person(id, nom, time);
 
-  function Person(nom, time) {
+  function Person(id, nom, time) {
+    this.id = id;
     this.nom = nom;
     this.time = time;
   }
 
-  list_user_suivant.push(person);
-  console.log(list_user_suivant);
+  list_user_new.push(person);
+  console.log(list_user_new);
 
   var tr_personne = document.createElement("tr");
   var td_nom = document.createElement("td");
   var td_date = document.createElement("td");
   var td_btn_passer = document.createElement("td");
   var btn_passer = document.createElement("button");
+  var a = document.createElement("a");
+  var span = document.createElement("span");
+
+  a.href = "";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
+  btn_passer.setAttribute("onclick", "passer(textContent)");
+  span.className = "hide_id_on_btn";
+  a.className = "link_all_btn";
 
-  for (i; i < list_user_suivant.length; i++) {
-    if (list_user_suivant[i] == list_user_suivant[0]) {
+  for (i; i < list_user_new.length; i++) {
+    if (list_user_new[i] == list_user_new[0]) {
       td_nom.className = "td_nom_demandant_first";
       td_date.className = "td_date_demandant_first";
       td_btn_passer.className = "td_btn_passer_first";
@@ -249,10 +423,13 @@ function recharge_list_suivant(nom, time) {
       td_btn_passer.className = "td_btn_passer_base";
     }
 
-    td_nom.textContent = list_user_suivant[i].nom;
+    td_nom.textContent = list_user_new[i].nom;
     td_date.textContent = time;
-    btn_passer.textContent = "Je passe mon tour";
+    a.textContent = "Je passe mon tour ";
+    span.textContent = id;
 
+    a.appendChild(span);
+    btn_passer.appendChild(a);
     td_btn_passer.appendChild(btn_passer);
 
     table_personnes.appendChild(tr_personne);
@@ -260,5 +437,100 @@ function recharge_list_suivant(nom, time) {
     table_personnes.appendChild(td_date);
     table_personnes.appendChild(td_btn_passer);
   }
-  localStorage.setItem("list_user", JSON.stringify(list_user));
+  localStorage.setItem("list_user_new", JSON.stringify(list_user_new));
+}
+
+function recharge_list_user_passer(id, nom, time) {
+  var id;
+  var nom;
+  var time;
+  var i = 0;
+  var table_personnes = document.getElementById("table_personnes");
+  var person = new Person(id, nom, time);
+
+  function Person(id, nom, time) {
+    this.id = id;
+    this.nom = nom;
+    this.time = time;
+  }
+
+  list_user_passer_new.push(person);
+  console.log(list_user_passer_new);
+
+  var tr_personne = document.createElement("tr");
+  var td_nom = document.createElement("td");
+  var td_date = document.createElement("td");
+  var td_btn_passer = document.createElement("td");
+
+  tr_personne.className = "tr_demandant_base";
+
+  for (i; i < list_user_suivant.length; i++) {
+    td_nom.className = "td_nom_demandant_passer";
+    td_date.className = "td_date_demandant_passer";
+    td_btn_passer.className = "td_btn_passer_passer";
+
+    td_nom.textContent = list_user_passer_new[i].nom;
+    td_date.textContent = time;
+
+    table_personnes.appendChild(tr_personne);
+    table_personnes.appendChild(td_nom);
+    table_personnes.appendChild(td_date);
+    table_personnes.appendChild(td_btn_passer);
+  }
+  localStorage.setItem("list_user_passer", JSON.stringify(list_user_passer_new));
+}
+
+function recharge_list_user_traite(id, nom, time) {
+  var id;
+  var nom;
+  var time;
+  var i = 0;
+  var table_personnes = document.getElementById("table_personnes");
+  var person = new Person(id, nom, time);
+
+  function Person(id, nom, time) {
+    this.id = id;
+    this.nom = nom;
+    this.time = time;
+  }
+
+  list_user_traite_new.push(person);
+  console.log(list_user_traite_new);
+
+  var tr_personne = document.createElement("tr");
+  var td_nom = document.createElement("td");
+  var td_date = document.createElement("td");
+  var td_btn_passer = document.createElement("td");
+
+  tr_personne.className = "tr_demandant_base";
+
+  for (i; i < list_user_suivant.length; i++) {
+    td_nom.className = "td_nom_demandant_traite";
+    td_date.className = "td_date_demandant_traite";
+    td_btn_passer.className = "td_btn_passer_traite";
+
+    td_nom.textContent = list_user_traite_new[i].nom;
+    td_date.textContent = time;
+
+    table_personnes.appendChild(tr_personne);
+    table_personnes.appendChild(td_nom);
+    table_personnes.appendChild(td_date);
+    table_personnes.appendChild(td_btn_passer);
+  }
+  localStorage.setItem("list_user_traite", JSON.stringify(list_user_traite_new));
+}
+
+//#############################################################################
+
+function verifications() {
+  var nom = document.getElementById("input_name").value;
+  if (nom == "" || nom == null) {
+    alert("Veuillez renseigner un nom, s'il vous plait!");
+  } else if (!nom.match(regex)) {
+    alert("Seulement les lettres et chiffres ainsi que ' ' ' et ' - ' !");
+  } else {
+    nom = nom.toLowerCase();
+    nom = nom.charAt(0).toUpperCase() + nom.slice(1);
+    add_person(nom);
+  }
 }

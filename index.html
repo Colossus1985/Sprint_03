@@ -38,17 +38,12 @@
       <div id="div_ajout">
         <form>
           <label for="name" id="label_nom">Ton nom :</label>
-          <input type="text" name="name" id="input_name" />
-<<<<<<< HEAD
-          <div id="btn_submit" onClick="add_name()">
+          <input type="text" name="name" id="input_name" maxlength="15" />
+          <div id="btn_submit" onClick="verifications()">
             <a href=""
-              ><p>veux de l'aide <img src="#" alt="btn_img_demande" /></p
+              ><p id="help">veux de l'aide <img src="img/hands.png" alt="btn_img_demande" /></p
             ></a>
           </div>
-=======
-          <div id="btn_submit"  onClick="add_name()">
-           <p id="help"> Je veux de l'aide   <img src="img/hands.png" alt="btn_img_demande" /></p>
->>>>>>> 7933f9f4d8805dba0b2a82b637dfe27a9d19cd12
         </form>
       </div>
       <div id="div_list">
@@ -57,12 +52,15 @@
         </div>
         <div id="btn_suivant">
           <div id="btn_suivant" onclick="suivant()">
-            <a href=""
-              ><p>Au suivant <img src="#" id="btn_img_suivant" alt="suivant" /> !</p></a
-            >
+            <a href="">
+              <p>Au suivant <img src="#" id="btn_img_suivant" alt="suivant" /> !</p>
+            </a>
           </div>
-          <button id="btn_refraiche_list">
-            Raffraîchir la liste <img src="#" id="btn_img_raffraichir" alt="raffraichir" />
+          <button id="btn_refraiche_list" onclick="raffraichir()">
+            <a href="">
+              Raffraîchir la liste
+              <img src="#" id="btn_img_raffraichir" alt="raffraichir" />
+            </a>
           </button>
         </div>
         <div id="div_list_names">
@@ -73,7 +71,6 @@
               <th id="passer_tour">Passer mon tour</th>
             </tr>
           </table>
-          <table id="table_personne_traite"></table>
         </div>
       </div>
     </div>
