@@ -9,13 +9,13 @@ body {
   margin: auto;
   width: 95%;
   margin-top: -1rem;
-  margin-bottom: 1rem;
-  padding-top: 1rem;
+  margin-bottom: 2rem;
+  padding-top: 4rem;
 }
 
 header {
   margin-top: 4rem;
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 #header_container {
@@ -28,15 +28,15 @@ header {
 }
 
 #icon_header {
-  margin-top: 2.1rem;
-  margin-left: 2rem;
+  margin-top: -1.5rem;
+  margin-left: 1rem;
 }
 
 #sec_title {
   font-size: 15px;
   background-color: rgba(142, 202, 230, 1);
   width: 90%;
-  height: 4rem;
+  height: auto;
   margin: auto;
   margin-top: 2rem;
   text-align: center;
@@ -78,7 +78,6 @@ form {
   height: 1rem;
   margin-left: 2rem;
   background-color: rgba(2, 48, 71, 1);
-  color: #fff;
   font-weight: bold;
   border: 0.5rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
@@ -86,7 +85,7 @@ form {
 
 #help {
   text-align: center;
-  margin-top: -0.5rem;
+  margin-top: -0.2rem;
 }
 #div_list {
   margin-top: 3.5rem;
@@ -96,38 +95,56 @@ form {
 
 #div_apprennant_title {
   background-color: rgba(142, 202, 230, 1);
-  height: 3rem;
+  height: auto;
   margin: auto;
   display: flex;
   width: 90%;
   justify-content: center;
 }
 
-#btn_modif_list {
-  margin-top: 2rem;
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#btn_suivant_div {
+  margin-top: 1rem;
   text-align: center;
 }
 
 #btn_suivant {
-  margin-left: 1rem;
+  display: inline-flex;
   background-color: rgba(2, 48, 71, 1);
-  color: #fff;
   font-weight: bold;
   border: 0.5rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
+  width: 10rem;
+  height: 1.2rem;
+  justify-content: center;
 }
+#suiv {
+  margin-top: -0.2rem;
+}
+
+#raff {
+  margin-top: -0.2rem;
+}
+
 #btn_refraiche_list {
-  margin-left: 1rem;
+  justify-content: center;
+  display: inline-flex;
   background-color: rgba(2, 48, 71, 1);
   color: #fff;
   font-weight: bold;
   border: 0.5rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
+  margin-left: 1rem;
+  width: 15rem;
+  height: 1.2rem;
 }
 
 #div_list_names {
   display: flex;
-
   margin: auto;
 }
 
@@ -139,16 +156,16 @@ table {
 
 #nom {
   width: 6rem;
-  height: 2rem;
+  height: 1rem;
 }
 #date {
   width: 14rem;
-  height: 2rem;
+  height: 1rem;
 }
 
 #passer_tour {
   width: 12rem;
-  height: 2rem;
+  height: 1rem;
 }
 tr {
   width: 4rem;
@@ -166,7 +183,7 @@ td {
 th {
   border: 0.1rem solid rgb(41, 41, 41);
   text-align: center;
-  background: green;
+  background: white;
   padding: 0.5rem;
 }
 td {
@@ -181,50 +198,46 @@ td {
   padding: 0.5rem;
 }
 .btn_passer {
-  background: orange;
+  background: rgba(251, 133, 0, 1);
   border-radius: 0.3rem;
   width: 10rem;
   height: 2rem;
 }
 .td_nom_demandant_first {
-  background: rgb(162, 145, 255);
+  background: rgb(64, 161, 206);
 }
 .td_date_demandant_first {
-  background: rgb(162, 145, 255);
+  background: rgb(64, 161, 206);
 }
 .td_btn_passer_first {
-  background: rgb(162, 145, 255);
+  background: rgb(64, 161, 206);
 }
 .td_nom_demandant_traite {
-  background: rgb(146, 248, 146);
+  background: rgb(94, 228, 94);
 }
 .td_date_demandant_traite {
-  background: rgb(146, 248, 146);
+  background: rgb(94, 228, 94);
 }
 .td_btn_passer_traite {
-  background: rgb(146, 248, 146);
+  background: rgb(94, 228, 94);
 }
 .td_nom_demandant_passer {
-  background: rgb(153, 153, 153);
+  background: rgb(107, 107, 107);
 }
 .td_date_demandant_passer {
-  background: rgb(153, 153, 153);
+  background: rgb(107, 107, 107);
 }
 .td_btn_passer_passer {
-  background: rgb(153, 153, 153);
+  background: rgb(107, 107, 107);
 }
 .hide_id_on_btn {
   color: rgba(0, 0, 0, 0);
-}
-.link_all_btn {
-  text-decoration: none;
 }
 
 .btn_passer_base {
   background-color: rgba(251, 133, 0, 1);
   border: 0.1rem solid rgba(251, 133, 0, 1);
   border-radius: 0.3rem;
-  color: #fff;
   font-weight: bold;
   width: 10rem;
   height: 1.6rem;
@@ -232,14 +245,17 @@ td {
 
 @media screen and (max-width: 1400px) {
   #maintitle {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   #sec_title {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 }
 
 @media screen and (max-width: 800px) {
+  #sec_title {
+    height: 8rem;
+  }
   #sec_title_part2 {
     margin-top: -1.6rem;
   }
@@ -256,5 +272,9 @@ td {
 @media screen and (max-width: 520px) {
   #btn_refraiche_list {
     margin-top: 1rem;
+  }
+
+  #header_container {
+    text-align: center;
   }
 }
