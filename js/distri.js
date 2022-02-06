@@ -9,7 +9,7 @@ var list_user_passer = [];
 var list_user_passer_new = [];
 var list_user_passer_LS = [];
 
-var regex = /^([-'a-zA-Z0-9àâçéèêëîïôûùüÿñæœ ]+)$/;
+var regex = /^([-'a-zA-Z0-9àâçéèêëîïôûùüÿñæœ_]*)$/;
 var iterance = 0;
 
 //###---controle des entrées de chararctères---###############################
@@ -571,6 +571,9 @@ function verifications() {
   } else {
     nom = nom.toLowerCase();
     nom = nom.charAt(0).toUpperCase() + nom.slice(1);
+    //    nom = ".............." + nom;
+    //    nom = nom.slice(-15);
     add_person(nom);
   }
 }
+//"0" + (day - 1)).slice(-2
