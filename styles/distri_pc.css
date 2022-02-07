@@ -82,6 +82,14 @@ form {
   border: 0.5rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
 }
+#btn_submit:hover {
+  background-color: rgb(64, 112, 134);
+  border: 0.5rem solid rgb(64, 112, 134);
+}
+#btn_submit:active {
+  background-color: rgb(20, 170, 20);
+  border: 0.5rem solid rgb(20, 170, 20);
+}
 
 #help {
   text-align: center;
@@ -116,18 +124,24 @@ a {
   display: inline-flex;
   background-color: rgba(2, 48, 71, 1);
   font-weight: bold;
-  border: 0.5rem solid rgba(2, 48, 71, 1);
+  border: 0.1rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
-  width: 10rem;
-  height: 1.2rem;
+  width: 9.2rem;
+  height: 1.9rem;
   justify-content: center;
 }
+
+#btn_suivant:hover {
+  background-color: rgb(20, 170, 20);
+  border: 0.1rem solid rgb(20, 170, 20);
+}
+
 #suiv {
-  margin-top: -0.2rem;
+  margin-top: 0.1rem;
 }
 
 #raff {
-  margin-top: -0.2rem;
+  margin-top: 0.1rem;
 }
 
 #btn_refraiche_list {
@@ -136,11 +150,16 @@ a {
   background-color: rgba(2, 48, 71, 1);
   color: #fff;
   font-weight: bold;
-  border: 0.5rem solid rgba(2, 48, 71, 1);
+  border: 0.1rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
   margin-left: 1rem;
   width: 15rem;
-  height: 1.2rem;
+  height: 1.9rem;
+}
+
+#btn_refraiche_list:hover {
+  background-color: rgb(20, 128, 170);
+  border: 0.1rem solid rgb(20, 128, 170);
 }
 
 #div_list_names {
@@ -164,7 +183,6 @@ table {
 }
 
 #passer_tour {
-  width: 12rem;
   height: 1rem;
 }
 tr {
@@ -173,13 +191,6 @@ tr {
   background-color: white;
 }
 
-td {
-  vertical-align: middle;
-  height: 2rem;
-  border: 0.1rem solid rgb(36, 36, 36);
-  text-align: center;
-  background-color: white;
-}
 th {
   border: 0.1rem solid rgb(41, 41, 41);
   text-align: center;
@@ -187,25 +198,17 @@ th {
   padding: 0.5rem;
 }
 td {
+  height: 1.7rem;
   border: 0.1rem solid black;
   text-align: center;
   background: white;
-  padding: 0.5rem;
+  padding: 0.2rem;
 }
 
-.td_btn_passer {
-  background: black;
-  padding: 0.5rem;
-}
-.btn_passer {
-  background: rgba(251, 133, 0, 1);
-  border-radius: 0.3rem;
-  width: 10rem;
-  height: 2rem;
-}
 .td_nom_demandant_first {
   background: rgb(64, 161, 206);
 }
+
 .td_date_demandant_first {
   background: rgb(64, 161, 206);
 }
@@ -223,24 +226,39 @@ td {
 }
 .td_nom_demandant_passer {
   background: rgb(107, 107, 107);
+  text-decoration: line-through;
 }
 .td_date_demandant_passer {
   background: rgb(107, 107, 107);
+  text-decoration: line-through;
 }
 .td_btn_passer_passer {
   background: rgb(107, 107, 107);
 }
 .hide_id_on_btn {
-  color: rgba(0, 0, 0, 0);
+  display: none;
+}
+
+.link_all_btn {
+  font-size: 1rem;
+  font-weight: 530;
+}
+
+.btn_passer_hiding {
+  display: none;
 }
 
 .btn_passer_base {
   background-color: rgba(251, 133, 0, 1);
   border: 0.1rem solid rgba(251, 133, 0, 1);
   border-radius: 0.3rem;
-  font-weight: bold;
   width: 10rem;
-  height: 1.6rem;
+  height: 1.7rem;
+}
+
+.btn_passer_base:hover {
+  background-color: rgb(70, 70, 70);
+  border: 0.1rem solid rgb(70, 70, 70);
 }
 
 @media screen and (max-width: 1400px) {

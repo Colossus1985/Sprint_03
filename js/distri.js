@@ -213,13 +213,13 @@ function date_time() {
   const date = new Date();
   var year = date.getFullYear();
   var month = date.getMonth();
-  var day = date.getDay();
+  var day = date.getDate();
   var hour = date.getHours();
   var min = date.getMinutes();
   var sec = date.getSeconds();
 
   var date_hour =
-    ("0" + (day - 1)).slice(-2) +
+    ("0" + (day)).slice(-2) +
     "/" +
     ("0" + (month + 1)).slice(-2) +
     "/" +
