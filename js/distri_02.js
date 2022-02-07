@@ -15,7 +15,7 @@ var list_user_passer = [];
 var list_user_passer_new = [];
 var list_user_passer_LS = [];
 
-var regex = /^([-'a-zA-Z0-9àâçéèêëîïôûùüÿñæœ_]*)$/;
+var regex = /^([-'a-zA-Z0-9àâçéèêëîïôûùüÿñæœ_ ]*)$/;
 var iterance = 0;
 
 //###---controle des entrées de chararctères---###############################
@@ -75,7 +75,7 @@ function recup_list_user_LS(id, nom, time, status) {
   var btn_passer = document.createElement("button");
   var a = document.createElement("a");
   var span = document.createElement("span");
-  a.href = "";
+  a.href = "#";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
@@ -145,7 +145,7 @@ function date_time() {
   const date = new Date();
   var year = date.getFullYear();
   var month = date.getMonth();
-  var day = date.getDay();
+  var day = date.getDate();
   var hour = date.getHours();
   var min = date.getMinutes();
   var sec = date.getSeconds();
@@ -198,7 +198,7 @@ function add_person(nom) {
       if (list_user[b].status == "passer" || list_user[b].status == "traite") {
         console.log("autre trouvé");
         var indice_insert = b;
-        list_user.insert(indice_insert, person);
+        list_user.splice(indice_insert, 0, person);
         break;
       } else if (list_user[list_user.length - 1].status == "attendant") {
         console.log("dernier est attendant");
@@ -218,7 +218,7 @@ function add_person(nom) {
   var btn_passer = document.createElement("button");
   var a = document.createElement("a");
   var span = document.createElement("span");
-  a.href = "";
+  a.href = "#";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
@@ -281,6 +281,7 @@ function suivant() {
 //######--btn_passer--############################################################################
 
 function passer(textContent) {
+  console.log("ici");
   var indice_insert;
   var id_btn_passer = textContent.slice(-4);
   id_btn_passer = parseInt(id_btn_passer);
@@ -301,8 +302,8 @@ function passer(textContent) {
           break;
         } else if (list_user[i].status == "traite") {
           indice_insert = i;
-          list_user.insert(indice_insert, user_passer[0]);
-
+          console.log(list_user);
+          list_user.splice(indice_insert, 0, user_passer[0]);
           break;
         }
       }
