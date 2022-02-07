@@ -75,7 +75,7 @@ function recup_list_user_LS(id, nom, time, status) {
   var btn_passer = document.createElement("button");
   var a = document.createElement("a");
   var span = document.createElement("span");
-  a.href = "#";
+  a.href = "";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
@@ -218,7 +218,7 @@ function add_person(nom) {
   var btn_passer = document.createElement("button");
   var a = document.createElement("a");
   var span = document.createElement("span");
-  a.href = "#";
+  a.href = "";
 
   tr_personne.className = "tr_demandant_base";
   btn_passer.className = "btn_passer_base";
