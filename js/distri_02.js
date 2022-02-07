@@ -1,10 +1,10 @@
 //localStorage.clear();
-
+/*
 Array.prototype.insert = function (index) {
   this.splice.apply(this, [index, 0].concat(Array.prototype.slice.call(arguments, 1)));
   return this;
 };
-
+*/
 var list_user = [];
 var list_user_new = [];
 var list_user_suivant = [];
@@ -342,6 +342,8 @@ function verifications() {
     nom = nom.charAt(0).toUpperCase() + nom.slice(1);
     //    nom = ".............." + nom;
     //    nom = nom.slice(-15);
+    //    nom = nom.split("").reverse().join("");
+    console.log(nom);
     add_person(nom);
   }
 }
