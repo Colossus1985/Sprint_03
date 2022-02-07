@@ -9,8 +9,10 @@ var list_user_passer = [];
 var list_user_passer_new = [];
 var list_user_passer_LS = [];
 
-var regex = /^([-'!a-zA-Z0-9àâçéèêëîïôûùüÿñæœ ]+)$/;
+var regex = /^([-'a-zA-Z0-9àâçéèêëîïôûùüÿñæœ_]*)$/;
 var iterance = 0;
+
+//###---controle des entrées de chararctères---###############################
 
 const input_nom = document.getElementById("input_name");
 input_nom.addEventListener("keydown", (event) => {
@@ -21,6 +23,27 @@ input_nom.addEventListener("keydown", (event) => {
   }
 });
 
+//###---récupration des différents liste dans le LocalStorage---###############
+//liste des personnes adentant d'étre aide (en blanc)
+function recup_list_LS(id_list, recup_list_user_fct) {
+  var list_user = localStorage.getItem(id_list);
+  if (list_user != "" && list_user != null) {
+    list_user = JSON.parse(list_user);
+    for (var i = 0; i < list_user.length; i++) {
+      var id = list_user[i].id;
+      var nom = list_user[i].nom;
+      var time = list_user[i].time;
+      recup_list_user_fct(id, nom, time);
+    }
+  }
+  return list_user;
+}
+
+var list_user_LS = recup_list_LS("list_user", recup_list_user_LS);
+var list_user_passer_LS = recup_list_LS("list_user_passer", recup_list_user_passer_LS);
+var list_user_traite_LS = recup_list_LS("list_user_traite", recup_list_user_traite_LS);
+
+/*
 var list_user_LS = localStorage.getItem("list_user");
 if (list_user_LS != "" && list_user_LS != null) {
   list_user_LS = JSON.parse(list_user_LS);
@@ -54,7 +77,9 @@ if (list_user_traite_LS != "" && list_user_traite_LS != null) {
     recup_list_user_traite_LS(id, nom, time);
   }
 }
-
+*/
+//###---fuctions pour reconstruire le tableau à partir des listes récuprérées dans le LocalStorage---###
+//liste des personnes adentant d'étre aide (en blanc)
 function recup_list_user_LS(id, nom, time) {
   var id;
   var nom;
@@ -98,7 +123,7 @@ function recup_list_user_LS(id, nom, time) {
     }
 
     td_nom.textContent = list_user[i].nom;
-    td_date.textContent = time;
+    td_date.textContent = list_user[i].time;
     a.textContent = "Je passe mon tour ";
     span.textContent = id;
 
@@ -112,6 +137,8 @@ function recup_list_user_LS(id, nom, time) {
     table_personnes.appendChild(td_btn_passer);
   }
 }
+
+//liste des personnes déjà traitées (en vert)
 
 function recup_list_user_traite_LS(id, nom, time) {
   var id;
@@ -143,7 +170,7 @@ function recup_list_user_traite_LS(id, nom, time) {
     td_btn_passer.className = "td_btn_passer_traite";
 
     td_nom.textContent = list_user_traite[i].nom;
-    td_date.textContent = time;
+    td_date.textContent = list_user_traite[i].time;
 
     table_personnes.appendChild(tr_personne);
     table_personnes.appendChild(td_nom);
@@ -151,6 +178,8 @@ function recup_list_user_traite_LS(id, nom, time) {
     table_personnes.appendChild(td_btn_passer);
   }
 }
+
+//liste des personnes ayant annulé leur demande d'aide (en gris)
 
 function recup_list_user_passer_LS(id, nom, time) {
   var id;
@@ -174,6 +203,7 @@ function recup_list_user_passer_LS(id, nom, time) {
   var td_nom = document.createElement("td");
   var td_date = document.createElement("td");
   var td_btn_passer = document.createElement("td");
+  var balise_barrer = document.createElement("del");
 
   tr_personne.className = "tr_demandant_base";
 
@@ -182,8 +212,10 @@ function recup_list_user_passer_LS(id, nom, time) {
     td_date.className = "td_date_demandant_passer";
     td_btn_passer.className = "td_btn_passer_passer";
 
-    td_nom.textContent = list_user_passer[i].nom;
-    td_date.textContent = time;
+    balise_barrer.textContent = list_user_passer[i].nom;
+    td_date.textContent = list_user_passer[i].time;
+
+    td_nom.appendChild(balise_barrer);
 
     table_personnes.appendChild(tr_personne);
     table_personnes.appendChild(td_nom);
@@ -192,15 +224,17 @@ function recup_list_user_passer_LS(id, nom, time) {
   }
 }
 
+//###---création de l'id---##################################################
+
 function id_user() {
   let id = 1;
-  while (verificationId_user(list_user, id)) {
+  while (verification_Id_user(list_user, id)) {
     id++;
   }
   id = ("000" + id).slice(-4);
   return id;
 }
-function verificationId_user(list_user, id) {
+function verification_Id_user(list_user, id) {
   for (var i = 0; i < list_user.length; i++) {
     if (list_user[i].id == id) {
       return true;
@@ -208,6 +242,8 @@ function verificationId_user(list_user, id) {
   }
   return false;
 }
+
+//###---création de la date et temps + concatenation---######################
 
 function date_time() {
   const date = new Date();
@@ -235,7 +271,7 @@ function date_time() {
 }
 
 //#####---btn_ajout---########################################################################
-
+//créer et ajouter un objet personne à la liste
 function add_person(nom) {
   var id = id_user();
   var time = date_time();
@@ -281,7 +317,7 @@ function add_person(nom) {
     }
 
     td_nom.textContent = list_user[i].nom;
-    td_date.textContent = time;
+    td_date.textContent = list_user[i].time;
     a.textContent = "Je passe mon tour ";
     span.textContent = id;
 
@@ -424,7 +460,7 @@ function recharge_list_user(id, nom, time) {
     }
 
     td_nom.textContent = list_user_new[i].nom;
-    td_date.textContent = time;
+    td_date.textContent = list_user_new[i].time;
     a.textContent = "Je passe mon tour ";
     span.textContent = id;
 
@@ -462,6 +498,8 @@ function recharge_list_user_passer(id, nom, time) {
   var td_date = document.createElement("td");
   var td_btn_passer = document.createElement("td");
 
+  var balise_barrer = document.createElement("del");
+
   tr_personne.className = "tr_demandant_base";
 
   for (i; i < list_user_suivant.length; i++) {
@@ -469,8 +507,10 @@ function recharge_list_user_passer(id, nom, time) {
     td_date.className = "td_date_demandant_passer";
     td_btn_passer.className = "td_btn_passer_passer";
 
-    td_nom.textContent = list_user_passer_new[i].nom;
-    td_date.textContent = time;
+    balise_barrer.textContent = list_user_passer_new[i].nom;
+    td_date.textContent = list_user_passer_new[i].time;
+
+    td_nom.appendChild(balise_barrer);
 
     table_personnes.appendChild(tr_personne);
     table_personnes.appendChild(td_nom);
@@ -510,7 +550,7 @@ function recharge_list_user_traite(id, nom, time) {
     td_btn_passer.className = "td_btn_passer_traite";
 
     td_nom.textContent = list_user_traite_new[i].nom;
-    td_date.textContent = time;
+    td_date.textContent = list_user_traite_new[i].time;
 
     table_personnes.appendChild(tr_personne);
     table_personnes.appendChild(td_nom);
@@ -531,6 +571,9 @@ function verifications() {
   } else {
     nom = nom.toLowerCase();
     nom = nom.charAt(0).toUpperCase() + nom.slice(1);
+    //    nom = ".............." + nom;
+    //    nom = nom.slice(-15);
     add_person(nom);
   }
 }
+//"0" + (day - 1)).slice(-2
