@@ -1,0 +1,72 @@
+Pseudo code BTN "Je veux de l'aide" Projet Sprint_03
+########################################################################################
+
+Bouton "je veux de l'aide":
+
+INPUT: Valeur du champs 'input' "nom".
+OUTPUT: Lignes remplies de la table sur le DOM.
+
+Cliquer sur btn "Je veux de l'aide" après avoir entrer un nom dans le champs imput.
+
+Avec un "oncklic" comme attribut sur le btn on fait appel à une fonction "verifier_entree".
+Dans une variable "nom" on récupère la valeur de l'input du DOM.
+Si "nom" est vide ou null 
+	alors on affiche un popup(warning)
+Si "nom" viole le regex 
+	alors on affiche un popup(warning)
+Sinon 
+	on formate "nom" 
+	on fait appel à la fonction "add_name" avec "nom".
+	
+dans "add_name"
+On récupère la table du DOM dans laquelle on mettra nos utilisateurs
+L'id sera recupéré par une fonction qui doit vérifier si l'id n'éxiste pas encore dans la liste.
+La date sera recupéré par une fonction qui doit renvoyer la date et l'heure formaté au format voulu.
+Le status sera "demandnat" par default et doit etre changée par les actions des différents autres btn.
+
+On mets l"user" dans une liste qui contient tous les "user".
+
+On crée les différents éléments que nous avons besoin pour construire les ligne de notre tableau
+On attribue un attribut "onclick" sur le btn "passe mon tour" pour lui donner une fonction à son activation.
+
+On vérifie chaque "user" et son status respectif pour lle placer dans le tableau selon ce status
+une classe distincte pour chaque status et pour chaque td selon ce status.  
+On différencie les "user" de "list_user" par un id et leur status
+	
+On sauvegarde "list_user" dans le local Storage
+
+------------------------------------------------------------------------------------------------------------
+
+Bouton "Je passe mon tour":
+
+INPUT: Le tableau visible
+OUTPUT: Le tableau visible modifié
+
+On prends l'"user" pour le mettre en bas de la liste avec une coloration distincte ou
+entre les user attendants et les user traités. 
+S'il y a déjà un user qui passe son tour on ajoute le nouveau user après ceux qui passent leur tour.
+
+On remplace "user_list" avec "user_list" modifiée dans le local Storage.
+
+------------------------------------------------------------------------------------------------------------
+ 	
+Bouton "Suivant":
+
+INPUT: Le tableau visible
+OUTPUT: Le tableau visible modifié
+
+L"user" placé à la première ligne sera mis tout en bas du tableau avec une coloration distincte
+
+On remplace "user_list" avec "user_list" modifiée dans le local Storage.
+	
+------------------------------------------------------------------------------------------------------------
+
+Bouton "Raffraichir Liste":
+
+INPUT: Le tableau visible
+OUTPUT: Le tableau visible modifié
+
+Tous les "user" qui ont ont passé leur tour seront supprimés du tableau.
+Cela comprends les celules et la ligne du tableau visible dans le DOM.
+
+On remplace "user_list" avec "user_list" modifiée dans le local Storage.
