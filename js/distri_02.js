@@ -144,7 +144,7 @@ function date_time() {
   var sec = date.getSeconds();
 
   var date_hour =
-    ("0" + (day)).slice(-2) +
+    ("0" + day).slice(-2) +
     "/" +
     ("0" + (month + 1)).slice(-2) +
     "/" +
@@ -261,14 +261,11 @@ function add_person(nom) {
 //#########--btn_suivant---###################################################################
 
 function suivant() {
-  
-  if (list_user[iterance] == list_user[0] &&
-    list_user[iterance].status == "attendant") {
+  if (list_user[iterance] == list_user[0] && list_user[iterance].status == "attendant") {
     var user_traite = list_user.shift();
     user_traite.status = "traite";
     list_user.push(user_traite);
   }
- 
 
   localStorage.clear();
   localStorage.setItem("list_user", JSON.stringify(list_user));
@@ -322,6 +319,7 @@ function raffraichir() {
       list_user_new.push(list_user[i]);
     }
   }
+  list_user = [];
   localStorage.clear();
   localStorage.setItem("list_user", JSON.stringify(list_user_new));
 }

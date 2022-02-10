@@ -153,9 +153,8 @@ a {
 }
 
 #btn_refraiche_list {
-  justify-content: center;
   display: inline-flex;
-  background-color: rgba(2, 48, 71, 1);
+  background: rgba(2, 48, 71, 1);
   color: #fff;
   font-weight: bold;
   border: 0.1rem solid rgba(2, 48, 71, 1);
@@ -163,17 +162,30 @@ a {
   margin-left: 1rem;
   width: 15rem;
   height: 1.9rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
 }
 
 #btn_refraiche_list:hover {
-  background-color: rgb(20, 128, 170);
-  border: 0.1rem solid rgb(20, 128, 170);
+  box-shadow: 1px 1px 15px 5px rgba(2, 48, 71, 0.4);
 }
 #btn_refraiche_list:active {
-  width: 14.8rem;
-  height: 1.7rem;
-  background-color: rgb(1, 76, 105);
-  border: 0.1rem solid rgb(1, 76, 105);
+  width: 14.9rem;
+  height: 1.8rem;
+}
+#btn_refraiche_list:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  transition: all 650ms;
+}
+#btn_refraiche_list:hover:before {
+  left: 100%;
 }
 
 #div_list_names {

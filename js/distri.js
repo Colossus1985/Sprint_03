@@ -25,8 +25,8 @@ input_nom.addEventListener("keydown", (event) => {
 
 //###---récupration des différents liste dans le LocalStorage---###############
 //liste des personnes adentant d'étre aide (en blanc)
-function recup_list_LS(id_list, recup_list_user_fct) {
-  var list_user = localStorage.getItem(id_list);
+function recup_list_LS(list, recup_list_user_fct) {
+  var list_user = localStorage.getItem(list);
   if (list_user != "" && list_user != null) {
     list_user = JSON.parse(list_user);
     for (var i = 0; i < list_user.length; i++) {
@@ -40,6 +40,7 @@ function recup_list_LS(id_list, recup_list_user_fct) {
 }
 
 var list_user_LS = recup_list_LS("list_user", recup_list_user_LS);
+
 var list_user_passer_LS = recup_list_LS("list_user_passer", recup_list_user_passer_LS);
 var list_user_traite_LS = recup_list_LS("list_user_traite", recup_list_user_traite_LS);
 
@@ -255,7 +256,7 @@ function date_time() {
   var sec = date.getSeconds();
 
   var date_hour =
-    ("0" + (day)).slice(-2) +
+    ("0" + day).slice(-2) +
     "/" +
     ("0" + (month + 1)).slice(-2) +
     "/" +
