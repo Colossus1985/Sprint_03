@@ -7,13 +7,6 @@ Array.prototype.insert = function (index) {
 */
 var list_user = [];
 var list_user_new = [];
-var list_user_suivant = [];
-var list_user_traite = [];
-var list_user_traite_new = [];
-var list_user_traite_LS = [];
-var list_user_passer = [];
-var list_user_passer_new = [];
-var list_user_passer_LS = [];
 
 var regex = /^([-'a-zA-Z0-9àâçéèêëîïôûùüÿñæœ_ ]*)$/;
 var iterance = 0;
@@ -30,9 +23,9 @@ input_nom.addEventListener("keydown", (event) => {
 });
 
 //###---récupration des différents liste dans le LocalStorage---###############
-//liste des personnes adentant d'étre aide (en blanc)
-function recup_list_LS(id_list, recup_list_user_fct) {
-  var list_user = localStorage.getItem(id_list);
+//liste des personnes attentant d'étre aide (en blanc)
+function recup_list_LS(list, recup_list_user_fct) {
+  var list_user = localStorage.getItem(list);
   if (list_user != "" && list_user != null) {
     list_user = JSON.parse(list_user);
     for (var i = 0; i < list_user.length; i++) {
@@ -49,7 +42,7 @@ function recup_list_LS(id_list, recup_list_user_fct) {
 var list_user_LS = recup_list_LS("list_user", recup_list_user_LS);
 
 //###---fuctions pour reconstruire le tableau à partir des listes récuprérées dans le LocalStorage---###
-//liste des personnes adentant d'étre aide (en blanc)
+//liste des personnes attentant d'étre aide (en blanc)
 function recup_list_user_LS(id, nom, time, status) {
   var id;
   var nom;
@@ -151,7 +144,7 @@ function date_time() {
   var sec = date.getSeconds();
 
   var date_hour =
-    ("0" + (day - 1)).slice(-2) +
+    ("0" + (day)).slice(-2) +
     "/" +
     ("0" + (month + 1)).slice(-2) +
     "/" +
@@ -268,11 +261,14 @@ function add_person(nom) {
 //#########--btn_suivant---###################################################################
 
 function suivant() {
-  if (list_user[iterance] == list_user[0]) {
+  
+  if (list_user[iterance] == list_user[0] &&
+    list_user[iterance].status == "attendant") {
     var user_traite = list_user.shift();
     user_traite.status = "traite";
     list_user.push(user_traite);
   }
+ 
 
   localStorage.clear();
   localStorage.setItem("list_user", JSON.stringify(list_user));

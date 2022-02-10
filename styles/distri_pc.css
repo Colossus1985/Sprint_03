@@ -76,6 +76,7 @@ form {
 #btn_submit {
   margin-top: -0.2rem;
   height: 1rem;
+  width: 12.3rem;
   margin-left: 2rem;
   background-color: rgba(2, 48, 71, 1);
   font-weight: bold;
@@ -89,6 +90,8 @@ form {
 #btn_submit:active {
   background-color: rgb(20, 170, 20);
   border: 0.5rem solid rgb(20, 170, 20);
+  height: 0.8rem;
+  width: 12.2rem;
 }
 
 #help {
@@ -135,7 +138,12 @@ a {
   background-color: rgb(20, 170, 20);
   border: 0.1rem solid rgb(20, 170, 20);
 }
-
+#btn_suivant:active {
+  background-color: rgb(4, 105, 4);
+  border: 0.1rem solid rgb(4, 105, 4);
+  width: 9rem;
+  height: 1.7rem;
+}
 #suiv {
   margin-top: 0.1rem;
 }
@@ -160,6 +168,12 @@ a {
 #btn_refraiche_list:hover {
   background-color: rgb(20, 128, 170);
   border: 0.1rem solid rgb(20, 128, 170);
+}
+#btn_refraiche_list:active {
+  width: 14.8rem;
+  height: 1.7rem;
+  background-color: rgb(1, 76, 105);
+  border: 0.1rem solid rgb(1, 76, 105);
 }
 
 #div_list_names {
@@ -258,6 +272,13 @@ td {
 .btn_passer_base:hover {
   background-color: rgb(70, 70, 70);
   border: 0.1rem solid rgb(70, 70, 70);
+}
+
+.btn_passer_base:active {
+  background-color: rgb(54, 54, 54);
+  border: 0.1rem solid rgb(54, 54, 54);
+  width: 9.7rem;
+  height: 1.5rem;
 }
 
 @media screen and (max-width: 1400px) {
