@@ -13,6 +13,6 @@ Notre dépôt git constitue deux projets afin de trouver d'autres fonctions du J
 ############################
 
 le lien vers notre présentation:
-https://www.canva.com/design/DAE3q_mJMGw/4aDXoQM02sUtD8Hy9zg3Sw/view?utm_content=DAE3q_mJMGw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+https://www.canva.com/design/DAE37uKtbJs/NygSY17RdYRa07DMlFdcHQ/view?utm_content=DAE37uKtbJs&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton
 
 ############################
