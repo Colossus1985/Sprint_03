@@ -1,10 +1,5 @@
 //localStorage.clear();
-/*
-Array.prototype.insert = function (index) {
-  this.splice.apply(this, [index, 0].concat(Array.prototype.slice.call(arguments, 1)));
-  return this;
-};
-*/
+
 var list_user = [];
 var list_user_new = [];
 
@@ -263,7 +258,13 @@ function add_person(nom) {
 function suivant() {
   if (list_user[iterance] == list_user[0] && list_user[iterance].status == "attendant") {
     var user_traite = list_user.shift();
+    var date_old = user_traite.time;
+    var date_new= date_time();
+    console.log('dateold', date_old);
+    console.log('datenew', date_new);
+
     user_traite.status = "traite";
+     user_traite.time= "👋" + " " +date_old + " "+ "💨" + " " + date_new;
     list_user.push(user_traite);
   }
 

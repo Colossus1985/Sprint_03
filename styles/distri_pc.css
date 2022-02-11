@@ -75,28 +75,47 @@ form {
 
 #btn_submit {
   margin-top: -0.2rem;
-  height: 1rem;
+  height: 1.8rem;
   width: 12.3rem;
   margin-left: 2rem;
   background-color: rgba(2, 48, 71, 1);
   font-weight: bold;
-  border: 0.5rem solid rgba(2, 48, 71, 1);
+  border: 0.1rem solid rgba(2, 48, 71, 1);
   border-radius: 0.2rem;
+  position: relative;
+  overflow: hidden;
 }
 #btn_submit:hover {
-  background-color: rgb(64, 112, 134);
-  border: 0.5rem solid rgb(64, 112, 134);
+  box-shadow: 1px 1px 15px 5px rgba(2, 48, 71, 0.4);
 }
+
+#btn_submit:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  left: -12rem;
+  top: -30px;
+  transform: rotate(37deg);
+  transition: all 0.5s;
+  opacity: 0.3;
+}
+
+#btn_submit:hover:before {
+  left: 95%;
+}
+
 #btn_submit:active {
   background-color: rgb(20, 170, 20);
-  border: 0.5rem solid rgb(20, 170, 20);
-  height: 0.8rem;
+  border: 0.1rem solid rgb(20, 170, 20);
+  height: 1.7rem;
   width: 12.2rem;
 }
 
 #help {
   text-align: center;
-  margin-top: -0.2rem;
+  margin-top: 0.1rem;
 }
 #div_list {
   margin-top: 3.5rem;
@@ -132,17 +151,36 @@ a {
   width: 9.2rem;
   height: 1.9rem;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
 }
 
 #btn_suivant:hover {
-  background-color: rgb(20, 170, 20);
-  border: 0.1rem solid rgb(20, 170, 20);
+  box-shadow: 1px 1px 15px 5px rgba(2, 48, 71, 0.4);
 }
 #btn_suivant:active {
-  background-color: rgb(4, 105, 4);
-  border: 0.1rem solid rgb(4, 105, 4);
   width: 9rem;
   height: 1.7rem;
+}
+
+#btn_suivant:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(133, 209, 133, 0.5),
+    transparent
+  );
+  transition: all 650ms;
+}
+#btn_suivant:hover:before {
+  left: 100%;
 }
 #suiv {
   margin-top: 0.1rem;
@@ -181,7 +219,12 @@ a {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 255, 0.4),
+    transparent
+  );
   transition: all 650ms;
 }
 #btn_refraiche_list:hover:before {
@@ -282,6 +325,7 @@ td {
 }
 
 .btn_passer_base:hover {
+  box-shadow: 1px 1px 15px 5px rgba(2, 48, 71, 0.4);
   background-color: rgb(70, 70, 70);
   border: 0.1rem solid rgb(70, 70, 70);
 }
@@ -291,6 +335,10 @@ td {
   border: 0.1rem solid rgb(54, 54, 54);
   width: 9.7rem;
   height: 1.5rem;
+}
+
+.link_all_btn:hover {
+  font-size: 1.1rem;
 }
 
 @media screen and (max-width: 1400px) {
@@ -318,7 +366,18 @@ td {
     height: 2rem;
   }
 }
-
+@media screen and (max-width: 680px) {
+  #btn_submit {
+    height: 3rem;
+  }
+  #btn_submit:before {
+    left: -10rem;
+    top: -10px;
+    transform: rotate(37deg);
+    transition: all 0.5s;
+    opacity: 0.3;
+  }
+}
 @media screen and (max-width: 520px) {
   #btn_refraiche_list {
     margin-top: 1rem;
