@@ -7,6 +7,7 @@ Bonjour/Bonsoir
 Pour ouvrir notre index il faudra clicker sur le lien dans la section "About" 
 ############################
 
+l'index_02 est beaucoup plus complet nous allons donc vous dirigés vers le lien de ce dernier.
 Notre dépôt git constitue deux projets afin de trouver d'autres fonctions du JavaScript.
 
 ############################
