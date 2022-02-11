@@ -7,7 +7,7 @@ Bonjour/Bonsoir
 Pour ouvrir notre index il faudra clicker sur le lien dans la section "About" 
 ############################
 
-Notre dépôt git constitue deux projets, dû part temps libre afin de trouver d'autres fonctions du JavaScript.
+Notre dépôt git constitue deux projets afin de trouver d'autres fonctions du JavaScript.
 
 ############################
 
