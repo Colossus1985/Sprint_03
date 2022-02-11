@@ -319,7 +319,6 @@ function raffraichir() {
       list_user_new.push(list_user[i]);
     }
   }
-  list_user = [];
   localStorage.clear();
   localStorage.setItem("list_user", JSON.stringify(list_user_new));
 }
