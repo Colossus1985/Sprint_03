@@ -1,5 +1,5 @@
 # Sprint_03
-https://github.com/Colossus1985/Sprint_03/blob/main/index.html
+https://colossus1985.github.io/Sprint_03//index_02.html
 
 ############################
 
